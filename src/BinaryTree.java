@@ -4,8 +4,10 @@ public class BinaryTree {
 
     public String predecessor (int key) {
         Node focusNode = root;
+        Node parent = root;
 
-        while(focusNode.key == key) {
+        while(focusNode.key != key) {
+            parent = focusNode;
             if (key < focusNode.key) {
                 focusNode = focusNode.leftChild;
             } else if (key > focusNode.key){
@@ -15,13 +17,13 @@ public class BinaryTree {
                 return "Predecessor: doesn't exist";
             }
         }
-        return "Predecessor of " + key + ": " + focusNode.key;
+        return "Predecessor of " + key + ": " + parent.key;
     }
 
     public String successor (int key) { //successor not functionable
         Node focusNode = root;
 
-        while(focusNode.key == key) {
+        while(focusNode.key != key) {
             if (key < focusNode.key) {
                 focusNode = focusNode.leftChild;
             } else if (key > focusNode.key){
@@ -221,7 +223,7 @@ public class BinaryTree {
     public String searchNode (int key) {
         Node focusNode = root;
 
-        while(focusNode.key == key) {
+        while(focusNode.key != key) {
             if (key < focusNode.key) {
                 focusNode = focusNode.leftChild;
             } else {
@@ -294,7 +296,7 @@ public class BinaryTree {
         System.out.println(tree.searchNode(60));
         System.out.println("Min value: " + tree.minimum());
         System.out.println("Max value: " + tree.maximum());
-        System.out.println(tree.predecessor(50));
+        System.out.println(tree.predecessor(45));
         System.out.println(tree.successor(10));
         System.out.println(tree.successor(45));
 
